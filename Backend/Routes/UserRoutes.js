@@ -18,7 +18,7 @@ userRoutes.route("/updateMe").patch(updateMe);
 userRoutes.route("/updatePassword").patch(updatePassword)
 userRoutes.route("/getMe").get(getMe)
 
-userRoutes.use(restrictedTo(["admin"]))
+// userRoutes.use(restrictedTo(["admin"]))
 
 userRoutes.route("/").get(getAllUsers)
 userRoutes.route("/:id").get(getOneUser).patch(updateUser).delete(deleteUser)

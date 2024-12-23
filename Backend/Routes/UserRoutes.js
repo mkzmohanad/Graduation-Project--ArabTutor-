@@ -10,7 +10,7 @@ userRoutes.route("/login").post(login);
 userRoutes.route("/forgetPassword").post(forgetPassword);
 userRoutes.route("/resetPassword/:token").patch(resetPassword);
 
-userRoutes.use(protectRoutes);
+// userRoutes.use(protectRoutes);
 
 userRoutes.route("/logout").get(logout);
 userRoutes.route("/deleteMe").patch(deleteMe)

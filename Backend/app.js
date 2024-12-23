@@ -36,9 +36,9 @@ app.use((req, res, next) => {
 app.use("/api/v1/users" , userRoutes);
 
 
-app.get('/', (req, res) => {
-    res.json({ message: 'API is running successfully!' });
-});
+// app.get('/', (req, res) => {
+//     res.json({ message: 'API is running successfully!' });
+// });
 
 app.all("*" , (req , res , next) => {
     next(new errorHandler(`the following url ${req.originalUrl} is not a valid url please enter an existing url` , 404))

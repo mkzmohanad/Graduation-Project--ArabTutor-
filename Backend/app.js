@@ -35,6 +35,7 @@ app.use((req, res, next) => {
 
 app.use("/api/v1/users" , userRoutes);
 
+
 app.get('/', (req, res) => {
     res.json({ message: 'API is running successfully!' });
 });

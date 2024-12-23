@@ -22,7 +22,16 @@ app.use(cors(corsOptions))
 app.use(cookieParser());
 app.use(bodyParser.json());
 
-
+app.use((req, res, next) => {
+    if (req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8000');
+        res.header('Access-Control-Allow-Credentials', 'true');
+        res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
+        res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        return res.status(204).send();
+    }
+    next();
+});
 
 app.use("/api/v1/users" , userRoutes);
 

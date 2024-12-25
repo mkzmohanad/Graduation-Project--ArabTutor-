@@ -10,7 +10,7 @@ const { globalErrorHandler } = require('./Controllers/ErrorController');
 const app = express();
 
 const corsOptions = {
-    origin: "http://127.0.0.1:8000", // Your frontend origin
+    origin: "/", // Your frontend origin
     methods : ['GET', 'POST', 'PATCH' , 'DELETE'],
     credentials: true, // Allow credentials (cookies, authorization headers, etc.)
     allowedHeaders: ['Content-Type', 'Authorization', 'x-csrf-token'], // Add allowed headers

@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
 const userRoutes = require("./Routes/UserRoutes");
+const VideoRoutes = require('./Routes/VideoRoutes');
 const errorHandler = require("./Utils/errorHandler")
 const { globalErrorHandler } = require('./Controllers/ErrorController');
 
@@ -34,6 +35,7 @@ app.use(bodyParser.json());
 // });
 
 app.use("/api/v1/users" , userRoutes);
+app.use("/api/v1/videos" , VideoRoutes);
 // app.get('/api/v1/users/', (req, res) => {
 //     res.json({ message: "Users fetched successfully", users: [] });
 // });

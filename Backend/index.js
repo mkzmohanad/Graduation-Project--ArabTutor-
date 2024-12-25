@@ -29,9 +29,17 @@ const connectDB = async () => {
 
 // mongoose.connect(DB).then(() => console.log('Connected to database...'))
 
-const port = process.env.PORT || 8000
+// const port = process.env.PORT || 8000
 
+// app.listen(port, () => {
+//     console.log('Connected to port successfully')
+// })
 
-app.listen(port, () => {
-    console.log('Connected to port successfully')
-})
+if (process.env.NODE_ENV !== 'production') {
+    const port = process.env.PORT || 8000;
+    app.listen(port, () => {
+      console.log(`Server running on http://localhost:${port}`);
+    });
+  }
+
+module.exports = app;

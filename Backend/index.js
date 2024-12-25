@@ -4,37 +4,13 @@ const dotenv = require('dotenv');
 dotenv.config({path : "./config.env"})
 const app = require('./app');
 
-// const mongoose = require('mongoose');
+const DB = process.env.DATABASE_STRING.replace("<db_password>" , `${process.env.DATABASE_PASSWORD}`)
 
-let isConnected = false; // Global connection state
+mongoose.connect(DB).then(() => console.log('Connected to database...'))
 
-const connectDB = async () => {
-    if (isConnected) {
-        console.log('Using existing database connection...');
-        return;
-    }
+const port = process.env.PORT || 8000
 
-    try {
-        const DB = process.env.DATABASE_STRING.replace(
-            '<db_password>',
-            process.env.DATABASE_password
-        );
 
-        const db = await mongoose.connect(DB, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            serverSelectionTimeoutMS: 5000, // Timeout if no connection
-            socketTimeoutMS: 45000,         // Close sockets after 45 seconds
-            keepAlive: true,
-            keepAliveInitialDelay: 300000   // 5 minutes
-        });
-
-        isConnected = db.connections[0].readyState === 1;
-        console.log('Connected to database...');
-    } catch (error) {
-        console.error('Database connection error:', error);
-        process.exit(1);
-    }
-};
-
-module.exports = connectDB;
+app.listen(port, () => {
+    console.log('Connected to port successfully')
+})

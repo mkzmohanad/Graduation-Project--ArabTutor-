@@ -24,7 +24,10 @@ const connectDB = async () => {
   };
   
   connectDB();
-  
+
+//   const DB = process.env.DATABASE_STRING.replace("<db_password>" , `${process.env.DATABASE_password}`)
+
+// mongoose.connect(DB).then(() => console.log('Connected to database...'))
 
 const port = process.env.PORT || 8000
 

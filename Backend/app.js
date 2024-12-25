@@ -40,6 +40,12 @@ app.use("/api/v1/users" , userRoutes);
 //     res.json({ message: 'API is running successfully!' });
 // });
 
+
+app.use((err, req, res, next) => {
+    console.error('Unhandled Error:', err.message);
+    res.status(500).json({ message: 'Internal Server Error', error: err.message });
+  });
+  
 app.all("*" , (req , res , next) => {
     next(new errorHandler(`the following url ${req.originalUrl} is not a valid url please enter an existing url` , 404))
 })

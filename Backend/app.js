@@ -33,10 +33,10 @@ app.use(bodyParser.json());
 //     next();
 // });
 
-// app.use("/api/v1/users" , userRoutes);
-app.get('/api/v1/users/', (req, res) => {
-    res.json({ message: "Users fetched successfully", users: [] });
-});
+app.use("/api/v1/users" , userRoutes);
+// app.get('/api/v1/users/', (req, res) => {
+//     res.json({ message: "Users fetched successfully", users: [] });
+// });
 
 
 // app.get('/', (req, res) => {

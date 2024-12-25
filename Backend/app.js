@@ -33,7 +33,10 @@ app.use(bodyParser.json());
 //     next();
 // });
 
-app.use("/api/v1/users" , userRoutes);
+// app.use("/api/v1/users" , userRoutes);
+app.get('/api/v1/users/', (req, res) => {
+    res.json({ message: "Users fetched successfully", users: [] });
+});
 
 
 // app.get('/', (req, res) => {
@@ -41,11 +44,11 @@ app.use("/api/v1/users" , userRoutes);
 // });
 
 
-app.use((err, req, res, next) => {
-    console.error('Unhandled Error:', err.message);
-    res.status(500).json({ message: 'Internal Server Error', error: err.message });
-  });
-  
+// app.use((err, req, res, next) => {
+//     console.error('Unhandled Error:', err.message);
+//     res.status(500).json({ message: 'Internal Server Error', error: err.message });
+//   });
+
 app.all("*" , (req , res , next) => {
     next(new errorHandler(`the following url ${req.originalUrl} is not a valid url please enter an existing url` , 404))
 })
